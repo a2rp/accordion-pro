@@ -1,12 +1,7 @@
-import AccordionPro from './accordionPro'
+import AccordionPro from "./pages/AccordionPro";
 
 const App = () => {
-    return (
-        <>
-            <AccordionPro />
-        </>
-    )
-}
+    return <AccordionPro />;
+};
 
-export default App
-
+export default App;

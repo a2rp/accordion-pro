@@ -1,23 +1,73 @@
-# Accordion Pro (React + Vite)
+# Accordion Pro
 
-**Live:** https://a2rp.github.io/accordion-pro/  
-**Repo:** https://github.com/a2rp/accordion-pro
+An advanced, responsive, and reusable Accordion component built with React, Vite, and styled-components.
 
-## What is this?
+Designed with persistent state, smooth animations, controls, and interactive microinteractions.
 
-A small, click-only **Accordion** component for React. Keeps open/closed state in **localStorage** so it survives reloads.
+## Preview
+
+![Accordion Pro Preview](./preview.png)
 
 ## Features
 
--   Click headers to **expand/collapse** sections
--   **Persist** open panels in localStorage
--   **Expand all / Collapse all** helpers
+- Responsive design
+- Persistent accordion state
+- Multiple panels support
+- Expand All and Collapse All
+- Reset saved state
+- Smooth expand and collapse animations
+- Mouse hover microinteractions
+- React Icons
+- Reusable and modular components
+- LocalStorage support
+- Keyboard accessible
+- Easy to customize
 
-## Run locally
+## Tech Stack
+
+- React
+- Vite
+- Styled Components
+- React Icons
+- JavaScript
+
+## Run Locally
 
 ```bash
-git clone https://github.com/a2rp/accordion-pro
-cd accordion-pro
-npm i
+npm install
 npm run dev
 ```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+## Author
+
+**Ashish Ranjan**
+
+- Portfolio: https://www.ashishranjan.net
+- GitHub: https://github.com/a2rp
+- CodePen: https://codepen.io/ash1198
+- LinkedIn: https://www.linkedin.com/in/aashishranjan
+- Facebook: https://www.facebook.com/theash.ashish/
+- YouTube: https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1
+- Email: mailto:ash.ranjan09@gmail.com
+
+## Support
+
+- Support: https://a2rp-donation-page.netlify.app/
+- Buy Me A Coffee: https://buymeacoffee.com/a2rp
+- Patreon: https://patreon.com/a2rp
+
+## License
+
+MIT License
