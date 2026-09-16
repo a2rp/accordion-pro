@@ -23,7 +23,7 @@ const About = () => {
                         <li>Backend routes that are clean, validated, and production-safe</li>
                         <li>CI/CD pipelines that make releases boring (the good kind)</li>
                     </ul>
-                    <p>When I'm not shipping, I experiment with AI/automation and share notes to help devs move faster. If you value clarity, speed, and maintainability, let's build something great.</p>
+                    <p>When I'm not shipping, I experiment with automation and share notes to help developers move faster. If you value clarity, speed, and maintainability, let's build something great.</p>
 
                     <h3>Skills & Tools</h3>
                     <ul>

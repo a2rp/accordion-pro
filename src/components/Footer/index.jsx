@@ -9,6 +9,7 @@ import {
     FiMail,
     FiYoutube,
 } from "react-icons/fi";
+import { createElement } from "react";
 
 import { Styled } from "./styled";
 
@@ -110,7 +111,7 @@ const Footer = () => {
                                 className="link"
                             >
                                 <span className="link-icon">
-                                    <Icon />
+                                    {createElement(Icon)}
                                 </span>
 
                                 <span>{label}</span>
@@ -157,7 +158,7 @@ const Footer = () => {
                     <a
                         href="https://www.ashishranjan.net"
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                     >
                         Ashish Ranjan
                     </a>

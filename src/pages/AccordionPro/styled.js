@@ -135,6 +135,19 @@ export const Styled = {
                 pointer-events: none;
             }
 
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 38%;
+                height: 260px;
+                background: linear-gradient(90deg, transparent, rgba(10, 11, 14, 0.2)), url("/accordion-pro/images/feature-1.jpg") center / cover;
+                opacity: 0.08;
+                pointer-events: none;
+                mix-blend-mode: screen;
+            }
+
             &:hover {
                 border-color: rgba(255, 255, 255, 0.12);
                 box-shadow:

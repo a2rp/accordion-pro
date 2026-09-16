@@ -1,89 +1,53 @@
 # Accordion Pro
 
-An advanced, responsive, and reusable Accordion component built with React, Vite, and styled-components.
-
-Designed with persistent state, smooth animations, controls, and interactive microinteractions.
-
-## Preview
-
-![Accordion Pro Preview](./preview.png)
+A polished React accordion demo with persistent open state, single or multiple panel modes, keyboard-accessible controls, and smooth responsive interactions.
 
 ## Features
 
-- Responsive design
-- Persistent accordion state
-- Multiple panels support
-- Expand All and Collapse All
-- Reset saved state
-- Smooth expand and collapse animations
-- Mouse hover microinteractions
-- React Icons
-- Reusable and modular components
-- LocalStorage support
-- Keyboard accessible
-- Easy to customize
+- Persistent state with `localStorage`
+- Single-panel and multi-panel opening modes
+- Expand all, collapse all, and reset controls
+- Responsive, accessible interface with subtle motion
+- Reusable React components and React Icons
 
-## Tech Stack
+## Tech stack
 
-- React
-- Vite
-- Styled Components
-- React Icons
-- JavaScript
+React · Vite · styled-components · React Icons · JavaScript
 
-## Run Locally
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
-
 ```bash
+npm run lint
 npm run build
 ```
 
-## Deploy
+## Deployment
 
-```bash
-npm run deploy
-```
+Live demo: [a2rp.github.io/accordion-pro](https://a2rp.github.io/accordion-pro/)
 
-## Author
-
-**Ashish Ranjan**
-
-- Portfolio: https://www.ashishranjan.net
-- GitHub: https://github.com/a2rp
-- CodePen: https://codepen.io/ash1198
-- LinkedIn: https://www.linkedin.com/in/aashishranjan
-- Facebook: https://www.facebook.com/theash.ashish/
-- YouTube: https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1
-- Email: mailto:ash.ranjan09@gmail.com
-
-## Support
-
-- Support: https://a2rp-donation-page.netlify.app/
-- Buy Me A Coffee: https://buymeacoffee.com/a2rp
-- Patreon: https://patreon.com/a2rp
-
-## License
-
-MIT License
+Deploy with `npm run deploy`.
 
 ## Links
 
-- Portfolio: [https://www.ashishranjan.net](https://www.ashishranjan.net)
-- GitHub: [https://github.com/a2rp](https://github.com/a2rp)
-- CodePen: [https://codepen.io/ash1198](https://codepen.io/ash1198)
-- LinkedIn: [https://www.linkedin.com/in/aashishranjan](https://www.linkedin.com/in/aashishranjan)
-- Facebook: [https://www.facebook.com/theash.ashish/](https://www.facebook.com/theash.ashish/)
-- YouTube: [https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1](https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1)
+- Portfolio: [ashishranjan.net](https://www.ashishranjan.net)
+- GitHub: [github.com/a2rp](https://github.com/a2rp)
+- CodePen: [codepen.io/ash1198](https://codepen.io/ash1198)
+- LinkedIn: [linkedin.com/in/aashishranjan](https://www.linkedin.com/in/aashishranjan)
+- Facebook: [facebook.com/theash.ashish](https://www.facebook.com/theash.ashish/)
+- YouTube: [youtube.com/@ashishranjan-ashz](https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1)
 - Email: [ash.ranjan09@gmail.com](mailto:ash.ranjan09@gmail.com)
 
 ## Support
 
-- Support: [https://a2rp-donation-page.netlify.app/](https://a2rp-donation-page.netlify.app/)
-- Buy Me A Coffee: [https://buymeacoffee.com/a2rp](https://buymeacoffee.com/a2rp)
-- Patreon: [https://patreon.com/a2rp](https://patreon.com/a2rp)
+- [Support](https://a2rp-donation-page.netlify.app/)
+- [Buy Me a Coffee](https://buymeacoffee.com/a2rp)
+- [Patreon](https://patreon.com/a2rp)
+
+## License
+
+MIT License
