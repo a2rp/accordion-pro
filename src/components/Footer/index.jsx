@@ -154,7 +154,7 @@ const Footer = () => {
 
             <div className="bottom">
                 <span>
-                    Developed by{" "}
+                    Copyright &copy; {year}{" "}
                     <a
                         href="https://www.ashishranjan.net"
                         target="_blank"
@@ -164,9 +164,8 @@ const Footer = () => {
                     </a>
                 </span>
 
-                <span className="dot" />
+                
 
-                <span>© {year} All rights reserved.</span>
             </div>
         </Styled.Wrapper>
     );
