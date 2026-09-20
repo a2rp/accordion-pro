@@ -5,10 +5,9 @@ import {
     FiLayers,
     FiRefreshCw,
     FiSliders,
-    FiSquare,
 } from "react-icons/fi";
 
-import { Styled } from "./styled";
+import styles from "./Controls.module.css";
 
 const Controls = ({
     mode,
@@ -20,123 +19,107 @@ const Controls = ({
     noneOpen,
 }) => {
     return (
-        <Styled.Wrapper>
-            <div className="top">
-                <div className="info">
-                    <div className="info-icon">
-                        <FiSliders />
-                    </div>
+        <section className={styles.controls} aria-labelledby="controls-title">
+            <div className={styles.topRow}>
+                <div className={styles.intro}>
+                    <span className={styles.introIcon}>
+                        <FiSliders aria-hidden="true" />
+                    </span>
 
                     <div>
-                        <span className="label">Quick Controls</span>
-
-                        <p className="para">
-                            Choose how panels open and manage them instantly.
-                        </p>
+                        <span className={styles.eyebrow} id="controls-title">
+                            Quick controls
+                        </span>
+                        <p>Choose a panel mode and manage every item quickly.</p>
                     </div>
                 </div>
 
-                <div className="buttons">
+                <div className={styles.actions}>
                     <button
                         type="button"
-                        className="button primary"
+                        className={`${styles.button} ${styles.primary}`}
                         onClick={onExpandAll}
                         disabled={allOpen || mode === "single"}
                         title={
                             mode === "single"
-                                ? "Available in multiple panels mode"
+                                ? "Switch to multiple mode to expand all panels"
                                 : "Expand all panels"
                         }
                     >
-                        <span className="button-icon">
-                            <FiChevronsDown />
-                        </span>
-
-                        <span>Expand All</span>
+                        <FiChevronsDown aria-hidden="true" />
+                        <span>Expand all</span>
                     </button>
 
                     <button
                         type="button"
-                        className="button"
+                        className={styles.button}
                         onClick={onCollapseAll}
                         disabled={noneOpen}
                         title="Collapse all panels"
                     >
-                        <span className="button-icon">
-                            <FiChevronsUp />
-                        </span>
-
-                        <span>Collapse All</span>
+                        <FiChevronsUp aria-hidden="true" />
+                        <span>Collapse all</span>
                     </button>
 
                     <button
                         type="button"
-                        className="button reset"
+                        className={`${styles.button} ${styles.reset}`}
                         onClick={onReset}
                         title="Reset saved state"
                     >
-                        <span className="button-icon">
-                            <FiRefreshCw />
-                        </span>
-
-                        <span>Reset State</span>
+                        <FiRefreshCw aria-hidden="true" />
+                        <span>Reset state</span>
                     </button>
                 </div>
             </div>
 
-            <div className="mode">
-                <span className="mode-title">
-                    <FiLayers />
-                    Opening Mode
-                </span>
+            <fieldset className={styles.modeFieldset}>
+                <legend>
+                    <FiLayers aria-hidden="true" />
+                    Opening mode
+                </legend>
 
-                <div className="mode-options">
+                <div className={styles.modeOptions}>
                     <label
-                        className={`mode-option ${
-                            mode === "single" ? "selected" : ""
-                        }`}
+                        className={`${styles.modeOption} ${mode === "single" ? styles.selected : ""}`}
                     >
                         <input
-                            type="checkbox"
+                            type="radio"
+                            name="accordion-mode"
+                            value="single"
                             checked={mode === "single"}
                             onChange={() => onModeChange("single")}
                         />
-
-                        <span className="check">
-                            {mode === "single" ? <FiCheck /> : <FiSquare />}
+                        <span className={styles.radioMark}>
+                            {mode === "single" && <FiCheck aria-hidden="true" />}
                         </span>
-
-                        <span className="mode-text">
+                        <span>
                             <strong>One at a time</strong>
-                            <small>
-                                Opening a new panel closes the previous one.
-                            </small>
+                            <small>Opening a new panel closes the previous one.</small>
                         </span>
                     </label>
 
                     <label
-                        className={`mode-option ${
-                            mode === "multiple" ? "selected" : ""
-                        }`}
+                        className={`${styles.modeOption} ${mode === "multiple" ? styles.selected : ""}`}
                     >
                         <input
-                            type="checkbox"
+                            type="radio"
+                            name="accordion-mode"
+                            value="multiple"
                             checked={mode === "multiple"}
                             onChange={() => onModeChange("multiple")}
                         />
-
-                        <span className="check">
-                            {mode === "multiple" ? <FiCheck /> : <FiSquare />}
+                        <span className={styles.radioMark}>
+                            {mode === "multiple" && <FiCheck aria-hidden="true" />}
                         </span>
-
-                        <span className="mode-text">
+                        <span>
                             <strong>More than one</strong>
                             <small>Keep multiple panels open together.</small>
                         </span>
                     </label>
                 </div>
-            </div>
-        </Styled.Wrapper>
+            </fieldset>
+        </section>
     );
 };
 

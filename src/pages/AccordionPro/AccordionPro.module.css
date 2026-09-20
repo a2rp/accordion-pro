@@ -1,0 +1,344 @@
+.page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 112px 20px 34px;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(148, 167, 255, 0.11), transparent 26%),
+        radial-gradient(circle at 88% 28%, rgba(93, 116, 255, 0.09), transparent 26%),
+        linear-gradient(145deg, #080a0f 0%, #0d111a 52%, #080a0f 100%);
+}
+
+.glowOne,
+.glowTwo {
+    position: fixed;
+    z-index: 0;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.16;
+    pointer-events: none;
+}
+
+.glowOne {
+    top: 12%;
+    left: -220px;
+    background: #a2b4ff;
+}
+
+.glowTwo {
+    right: -220px;
+    bottom: 3%;
+    background: #586dff;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+    align-items: center;
+    gap: clamp(35px, 7vw, 90px);
+    min-height: 570px;
+    padding: 52px 0 64px;
+}
+
+.heroCopy {
+    min-width: 0;
+}
+
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 21px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.kicker svg {
+    width: 16px;
+    height: 16px;
+}
+
+.hero h1 {
+    max-width: 680px;
+    overflow-wrap: anywhere;
+    color: #f7f8ff;
+    font-size: clamp(3.6rem, 9vw, 7.8rem);
+    letter-spacing: -0.085em;
+    line-height: 0.9;
+}
+
+.hero h1 span {
+    color: rgba(148, 167, 255, 0.7);
+}
+
+.heroText {
+    max-width: 610px;
+    overflow-wrap: anywhere;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+    line-height: 1.75;
+}
+
+.heroActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.primaryAction,
+.secondaryAction {
+    display: inline-flex;
+    min-height: 47px;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 17px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.primaryAction {
+    background: #e9edff;
+    color: #121623;
+}
+
+.primaryAction:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+}
+
+.secondaryAction {
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.035);
+    color: #d7ddf1;
+}
+
+.secondaryAction:hover {
+    border-color: rgba(148, 167, 255, 0.5);
+    background: rgba(148, 167, 255, 0.11);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.primaryAction svg,
+.secondaryAction svg {
+    width: 16px;
+    height: 16px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 42px;
+}
+
+.stats div {
+    display: grid;
+    gap: 3px;
+}
+
+.stats strong {
+    color: #ffffff;
+    font-size: 1.35rem;
+    letter-spacing: -0.04em;
+}
+
+.stats span {
+    color: var(--subtle);
+    font-size: 0.7rem;
+    font-weight: 650;
+    text-transform: uppercase;
+}
+
+.heroVisual {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: #111621;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.32);
+    isolation: isolate;
+}
+
+.heroVisual::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(8, 10, 15, 0.04), rgba(8, 10, 15, 0.65));
+    content: "";
+    pointer-events: none;
+}
+
+.heroVisual img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    filter: saturate(0.74) contrast(1.05);
+    transition: transform 700ms ease, filter 700ms ease;
+}
+
+.heroVisual:hover img {
+    filter: saturate(1) contrast(1.03);
+    transform: scale(1.04);
+}
+
+.visualCard,
+.visualBadge {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(12, 15, 23, 0.76);
+    backdrop-filter: blur(14px);
+}
+
+.visualCard {
+    right: 18px;
+    bottom: 18px;
+    padding: 13px 15px;
+    border-radius: 14px;
+}
+
+.visualCard > svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+}
+
+.visualCard span {
+    display: grid;
+    gap: 2px;
+}
+
+.visualCard strong {
+    color: #ffffff;
+    font-size: 0.77rem;
+}
+
+.visualCard small {
+    color: var(--muted);
+    font-size: 0.67rem;
+}
+
+.visualBadge {
+    top: 18px;
+    left: 18px;
+    padding: 10px 12px;
+    border-radius: 11px;
+    color: #e9edff;
+    font-size: 0.72rem;
+    font-weight: 750;
+}
+
+.visualBadge svg {
+    width: 16px;
+    height: 16px;
+    color: #ffd58a;
+}
+
+.workspace {
+    padding: clamp(22px, 4vw, 40px);
+    border: 1px solid var(--border-soft);
+    border-radius: 28px;
+    background: rgba(10, 13, 20, 0.74);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(18px);
+}
+
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 45px 0 54px;
+    }
+
+    .heroVisual {
+        width: min(100%, 620px);
+        min-height: 360px;
+        margin: 0 auto;
+    }
+
+    .heroVisual img {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 560px) {
+    .page {
+        padding: 90px 12px 24px;
+    }
+
+    .hero {
+        padding: 34px 0 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.2rem, 18vw, 5.2rem);
+    }
+
+    .hero h1 span {
+        display: block;
+    }
+
+    .heroText {
+        margin-top: 19px;
+        font-size: 0.9rem;
+    }
+
+    .heroActions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .primaryAction,
+    .secondaryAction {
+        width: 100%;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 31px;
+    }
+
+    .stats div {
+        min-width: 0;
+    }
+
+    .stats span {
+        font-size: 0.61rem;
+    }
+
+    .heroVisual,
+    .heroVisual img {
+        min-height: 300px;
+    }
+
+    .workspace {
+        padding: 16px;
+        border-radius: 21px;
+    }
+}

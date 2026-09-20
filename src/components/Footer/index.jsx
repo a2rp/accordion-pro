@@ -1,34 +1,23 @@
+import { createElement } from "react";
 import {
     FiCodepen,
-    FiExternalLink,
+    FiCoffee,
     FiFacebook,
     FiGithub,
     FiGlobe,
     FiHeart,
     FiLinkedin,
     FiMail,
+    FiStar,
     FiYoutube,
 } from "react-icons/fi";
-import { createElement } from "react";
 
-import { Styled } from "./styled";
+import styles from "./Footer.module.css";
 
-const links = [
-    {
-        label: "Portfolio",
-        href: "https://www.ashishranjan.net",
-        icon: FiGlobe,
-    },
-    {
-        label: "GitHub",
-        href: "https://github.com/a2rp",
-        icon: FiGithub,
-    },
-    {
-        label: "CodePen",
-        href: "https://codepen.io/ash1198",
-        icon: FiCodepen,
-    },
+const profileLinks = [
+    { label: "Portfolio", href: "https://www.ashishranjan.net/", icon: FiGlobe },
+    { label: "GitHub", href: "https://github.com/a2rp", icon: FiGithub },
+    { label: "CodePen", href: "https://codepen.io/ash1198", icon: FiCodepen },
     {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/aashishranjan",
@@ -44,130 +33,86 @@ const links = [
         href: "https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1",
         icon: FiYoutube,
     },
-    {
-        label: "Email",
-        href: "mailto:ash.ranjan09@gmail.com",
-        icon: FiMail,
-    },
+    { label: "Email", href: "mailto:ash.ranjan09@gmail.com", icon: FiMail },
 ];
 
 const supportLinks = [
     {
         label: "Support",
         href: "https://a2rp-donation-page.netlify.app/",
+        icon: FiHeart,
     },
     {
-        label: "Buy Me A Coffee",
+        label: "Buy Me a Coffee",
         href: "https://buymeacoffee.com/a2rp",
+        icon: FiCoffee,
     },
-    {
-        label: "Patreon",
-        href: "https://patreon.com/a2rp",
-    },
+    { label: "Patreon", href: "https://www.patreon.com/a2rp", icon: FiStar },
 ];
+
+const FooterLink = ({ label, href, icon }) => {
+    const isEmail = href.startsWith("mailto:");
+
+    return (
+        <a
+            className={styles.iconLink}
+            data-tooltip={label}
+            href={href}
+            target={isEmail ? undefined : "_blank"}
+            rel={isEmail ? undefined : "noopener noreferrer"}
+            aria-label={label}
+            title={label}
+        >
+            {createElement(icon, { "aria-hidden": true })}
+        </a>
+    );
+};
 
 const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <Styled.Wrapper>
-            <div className="top">
-                <div className="author">
-                    <div className="author-icon">
-                        <FiHeart />
-                    </div>
+        <footer className={styles.footer} id="footer">
+            <div className={styles.footerTop}>
+                <div className={styles.footerIntro}>
+                    <span className={styles.heart}>
+                        <FiHeart aria-hidden="true" />
+                    </span>
 
-                    <div className="author-text">
-                        <span className="label">Built by</span>
-
-                        <h2>
-                            <a
-                                href="https://www.ashishranjan.net"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Ashish Ranjan
-                                <FiExternalLink />
-                            </a>
-                        </h2>
-
-                        <p>
-                            Building clean, reusable, and interactive web
-                            experiences.
-                        </p>
+                    <div>
+                        <span className={styles.eyebrow}>Keep exploring</span>
+                        <p>Reusable components make thoughtful interfaces easier to build.</p>
                     </div>
                 </div>
 
-                <div className="links">
-                    {links.map(({ label, href, icon: Icon }) => {
-                        const isEmail = href.startsWith("mailto:");
-
-                        return (
-                            <a
-                                key={label}
-                                href={href}
-                                target={isEmail ? undefined : "_blank"}
-                                rel={isEmail ? undefined : "noreferrer"}
-                                className="link"
-                            >
-                                <span className="link-icon">
-                                    {createElement(Icon)}
-                                </span>
-
-                                <span>{label}</span>
-
-                                {!isEmail && (
-                                    <FiExternalLink className="open-icon" />
-                                )}
-                            </a>
-                        );
-                    })}
-                </div>
-            </div>
-
-            <div className="support">
-                <a
-                    href="https://a2rp-donation-page.netlify.app/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="support-title"
-                >
-                    <FiHeart />
-                    <span>Support my work</span>
-                    <FiExternalLink />
-                </a>
-
-                <div className="support-links">
-                    {supportLinks.map((item) => (
-                        <a
-                            key={item.label}
-                            href={item.href}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <span>{item.label}</span>
-                            <FiExternalLink />
-                        </a>
+                <div className={styles.linkGroup} aria-label="Profile links">
+                    {profileLinks.map((link) => (
+                        <FooterLink key={link.label} {...link} />
                     ))}
                 </div>
             </div>
 
-            <div className="bottom">
-                <span>
-                    Copyright &copy; {year}{" "}
-                    <a
-                        href="https://www.ashishranjan.net"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Ashish Ranjan
-                    </a>
-                </span>
+            <div className={styles.supportRow}>
+                <span className={styles.supportLabel}>Support the project</span>
 
-                
-
+                <div className={styles.linkGroup} aria-label="Support links">
+                    {supportLinks.map((link) => (
+                        <FooterLink key={link.label} {...link} />
+                    ))}
+                </div>
             </div>
-        </Styled.Wrapper>
+
+            <p className={styles.copyright}>
+                Copyright &copy; {year}{" "}
+                <a
+                    href="https://www.ashishranjan.net/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ashish Ranjan
+                </a>
+            </p>
+        </footer>
     );
 };
 

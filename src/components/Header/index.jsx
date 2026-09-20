@@ -1,91 +1,137 @@
+import { createElement, useEffect, useState } from "react";
 import {
     FiActivity,
+    FiBookOpen,
     FiChevronRight,
-    FiLayers,
-    FiMousePointer,
-    FiRefreshCw,
+    FiGithub,
+    FiMenu,
+    FiX,
 } from "react-icons/fi";
 
-import { Styled } from "./styled";
+import styles from "./Header.module.css";
+
+const menuLinks = [
+    { label: "Overview", href: "#top", icon: FiActivity },
+    { label: "Accordion", href: "#accordion", icon: FiBookOpen },
+    { label: "Features", href: "#features", icon: FiChevronRight },
+];
 
 const Header = ({ openCount, totalCount }) => {
+    const [isHidden, setIsHidden] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const completion =
         totalCount > 0 ? Math.round((openCount / totalCount) * 100) : 0;
 
+    useEffect(() => {
+        let previousScroll = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll <= 16) {
+                setIsHidden(false);
+            } else if (currentScroll > previousScroll + 4) {
+                setIsHidden(true);
+                setIsMenuOpen(false);
+            } else if (currentScroll < previousScroll - 4) {
+                setIsHidden(false);
+            }
+
+            previousScroll = currentScroll;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isMenuOpen]);
+
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
-        <Styled.Wrapper $completion={completion}>
-            <div className="header-content">
-                <div className="top-label">
-                    <span className="label-icon">
-                        <FiLayers />
+        <header className={`${styles.header} ${isHidden ? styles.hidden : ""}`}>
+            <div className={styles.inner}>
+                <a className={styles.brand} href="#top" onClick={closeMenu}>
+                    <img
+                        src={`${import.meta.env.BASE_URL}logo.png`}
+                        alt="Ashish Ranjan logo"
+                    />
+
+                    <span>
+                        <small>React UI component</small>
+                        <strong>Accordion Pro</strong>
                     </span>
+                </a>
 
-                    <span>Advanced React Accordion</span>
+                <nav className={styles.desktopNav} aria-label="Main navigation">
+                    {menuLinks.map(({ label, href, icon }) => (
+                        <a key={label} href={href}>
+                            {createElement(icon, { "aria-hidden": true })}
+                            <span>{label}</span>
+                        </a>
+                    ))}
+                </nav>
 
-                    <FiChevronRight className="label-arrow" />
-                </div>
-
-                <div className="title-row">
-                    <div className="title-content">
-                        <h1>
-                            Accordion
-                            <span> Pro</span>
-                        </h1>
-
-                        <p>
-                            A polished, persistent, and interactive accordion
-                            experience with smooth motion, responsive behavior,
-                            and reusable architecture.
-                        </p>
+                <div className={styles.actions}>
+                    <div
+                        className={styles.progress}
+                        aria-label={`${completion}% expanded`}
+                    >
+                        <span className={styles.progressIcon}>
+                            <FiActivity aria-hidden="true" />
+                        </span>
+                        <span>
+                            <strong>{openCount}</strong>/{totalCount} open
+                        </span>
                     </div>
 
-                    <div className="status-card">
-                        <div className="status-card-top">
-                            <div className="status-icon">
-                                <FiActivity />
-                            </div>
+                    <a
+                        className={styles.github}
+                        href="https://github.com/a2rp/accordion-pro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Accordion Pro on GitHub"
+                        title="View on GitHub"
+                    >
+                        <FiGithub aria-hidden="true" />
+                    </a>
 
-                            <div>
-                                <span className="status-label">
-                                    Active Panels
-                                </span>
-
-                                <strong>
-                                    {openCount}
-                                    <span> / {totalCount}</span>
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div className="progress-track">
-                            <div className="progress-value" />
-                        </div>
-
-                        <div className="progress-info">
-                            <span>{completion}% expanded</span>
-                            <FiRefreshCw />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="feature-row">
-                    <div className="feature-item">
-                        <FiRefreshCw />
-                        <span>Persistent State</span>
-                    </div>
-
-                    <div className="feature-item">
-                        <FiMousePointer />
-                        <span>Microinteractions</span>
-                    </div>
-
-                    <div className="feature-item">
-                        <FiLayers />
-                        <span>Reusable Structure</span>
-                    </div>
+                    <button
+                        className={styles.menuButton}
+                        type="button"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-navigation"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        onClick={() => setIsMenuOpen((open) => !open)}
+                    >
+                        {isMenuOpen ? <FiX /> : <FiMenu />}
+                    </button>
                 </div>
             </div>
-        </Styled.Wrapper>
+
+            <div
+                className={`${styles.mobilePanel} ${isMenuOpen ? styles.mobilePanelOpen : ""}`}
+                id="mobile-navigation"
+                aria-hidden={!isMenuOpen}
+            >
+                <nav aria-label="Mobile navigation">
+                    {menuLinks.map(({ label, href, icon }) => (
+                        <a key={label} href={href} onClick={closeMenu}>
+                            {createElement(icon, { "aria-hidden": true })}
+                            <span>{label}</span>
+                            <FiChevronRight aria-hidden="true" />
+                        </a>
+                    ))}
+                </nav>
+            </div>
+        </header>
     );
 };
 

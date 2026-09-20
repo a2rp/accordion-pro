@@ -1,83 +1,88 @@
-import { FiChevronDown, FiCircle, FiLayers } from "react-icons/fi";
+import { FiBookOpen, FiChevronDown, FiCircle } from "react-icons/fi";
 
-import { Styled } from "./styled";
+import styles from "./Accordion.module.css";
 
 const Accordion = ({ items, openIds, onToggle }) => {
     return (
-        <Styled.Wrapper>
-            <div className="top-row">
-                <div className="title-info">
-                    <span className="title-icon">
-                        <FiLayers />
+        <section
+            className={styles.accordion}
+            id="accordion"
+            aria-labelledby="accordion-title"
+        >
+            <div className={styles.heading}>
+                <div className={styles.headingText}>
+                    <span className={styles.headingIcon}>
+                        <FiBookOpen aria-hidden="true" />
                     </span>
 
                     <div>
-                        <span className="label">Content</span>
-                        <h2>Explore the accordion</h2>
+                        <span className={styles.eyebrow}>Interactive content</span>
+                        <h2 id="accordion-title">Explore the accordion</h2>
                     </div>
                 </div>
 
-                <span className="count">{items.length} items</span>
+                <span className={styles.count}>{items.length} items</span>
             </div>
 
-            <div className="list">
+            <div className={styles.list}>
                 {items.map((item, index) => {
                     const isOpen = openIds.includes(item.id);
+                    const buttonId = `accordion-button-${item.id}`;
+                    const panelId = `accordion-panel-${item.id}`;
 
                     return (
                         <article
+                            className={`${styles.item} ${isOpen ? styles.open : ""}`}
                             key={item.id}
-                            className={`item ${isOpen ? "open" : ""}`}
                         >
                             <button
                                 type="button"
-                                className="item-button"
+                                className={styles.itemButton}
                                 onClick={() => onToggle(item.id)}
                                 aria-expanded={isOpen}
-                                aria-controls={`panel-${item.id}`}
-                                id={`button-${item.id}`}
+                                aria-controls={panelId}
+                                id={buttonId}
                             >
-                                <div className="item-info">
-                                    <span className="number">
+                                <span className={styles.itemInfo}>
+                                    <span className={styles.number}>
                                         {String(index + 1).padStart(2, "0")}
                                     </span>
 
-                                    <div className="item-text">
-                                        <div className="item-title">
-                                            <FiCircle className="dot" />
-                                            <h3>{item.title}</h3>
-                                        </div>
+                                    <span className={styles.itemText}>
+                                        <span className={styles.itemTitle}>
+                                            <FiCircle
+                                                className={styles.dot}
+                                                aria-hidden="true"
+                                            />
+                                            <span>{item.title}</span>
+                                        </span>
 
-                                        {item.subtitle && (
-                                            <p>{item.subtitle}</p>
-                                        )}
-                                    </div>
-                                </div>
+                                        {item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}
+                                    </span>
+                                </span>
 
-                                <span className="arrow">
+                                <span className={styles.arrow} aria-hidden="true">
                                     <FiChevronDown />
                                 </span>
                             </button>
 
                             <div
-                                className="panel"
-                                id={`panel-${item.id}`}
+                                className={styles.panel}
+                                id={panelId}
                                 role="region"
-                                aria-labelledby={`button-${item.id}`}
+                                aria-labelledby={buttonId}
+                                aria-hidden={!isOpen}
                             >
-                                <div className="panel-inner">
-                                    <div className="line" />
-
-                                    <div className="content">
-                                        {item.content}
-                                    </div>
+                                <div className={styles.panelInner}>
+                                    <div className={styles.line} />
+                                    <div className={styles.content}>{item.content}</div>
                                 </div>
                             </div>
                         </article>
                     );
                 })}
             </div>
-        </Styled.Wrapper>
+        </section>
     );
 };
 

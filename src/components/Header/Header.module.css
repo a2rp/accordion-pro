@@ -1,0 +1,250 @@
+.header {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(8, 10, 15, 0.82);
+    backdrop-filter: blur(20px);
+    transform: translateY(0);
+    transition: transform 260ms ease, background 220ms ease;
+}
+
+.hidden {
+    transform: translateY(-110%);
+}
+
+.inner {
+    display: flex;
+    width: min(1180px, calc(100% - 40px));
+    min-height: 74px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    gap: 11px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 13px;
+    background: #0c0f16;
+    object-fit: contain;
+    transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.brand:hover img {
+    border-color: rgba(148, 167, 255, 0.7);
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.brand span {
+    display: grid;
+    gap: 2px;
+}
+
+.brand small {
+    color: var(--subtle);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.brand strong {
+    font-size: 0.98rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.desktopNav a,
+.mobilePanel a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.desktopNav a {
+    padding: 10px 12px;
+}
+
+.desktopNav a:hover,
+.mobilePanel a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.desktopNav svg,
+.mobilePanel svg {
+    width: 16px;
+    height: 16px;
+}
+
+.actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 9px;
+}
+
+.progress {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--muted);
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.progress strong {
+    color: #ffffff;
+}
+
+.progressIcon {
+    display: inline-flex;
+    color: var(--accent);
+}
+
+.progressIcon svg,
+.github svg,
+.menuButton svg {
+    width: 17px;
+    height: 17px;
+}
+
+.github,
+.menuButton {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid var(--border-soft);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--muted);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.github:hover,
+.menuButton:hover {
+    border-color: rgba(148, 167, 255, 0.55);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.menuButton {
+    display: none;
+}
+
+.mobilePanel {
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .desktopNav {
+        display: none;
+    }
+
+    .menuButton {
+        display: grid;
+    }
+}
+
+@media (max-width: 540px) {
+    .inner {
+        width: min(100% - 24px, 1180px);
+        min-height: 66px;
+        gap: 10px;
+    }
+
+    .brand img {
+        width: 37px;
+        height: 37px;
+        border-radius: 11px;
+    }
+
+    .brand small {
+        display: none;
+    }
+
+    .brand strong {
+        font-size: 0.9rem;
+    }
+
+    .progress {
+        padding: 8px;
+    }
+
+    .progress span:last-child {
+        display: none;
+    }
+
+    .github {
+        display: none;
+    }
+
+    .mobilePanel {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        border-top: 1px solid transparent;
+        background: rgba(8, 10, 15, 0.98);
+        opacity: 0;
+        transition: max-height 220ms ease, opacity 180ms ease, border-color 180ms ease;
+    }
+
+    .mobilePanelOpen {
+        max-height: 240px;
+        border-color: var(--border-soft);
+        opacity: 1;
+    }
+
+    .mobilePanel nav {
+        display: grid;
+        gap: 4px;
+        width: min(100% - 24px, 1180px);
+        margin: 0 auto;
+        padding: 12px 0 16px;
+    }
+
+    .mobilePanel a {
+        justify-content: flex-start;
+        min-height: 42px;
+        padding: 0 12px;
+    }
+
+    .mobilePanel a svg:last-child {
+        margin-left: auto;
+    }
+}

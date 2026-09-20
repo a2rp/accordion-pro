@@ -2,14 +2,18 @@ import { useCallback, useState } from "react";
 
 const useLocalStorage = (key, initialValue) => {
     const getInitialValue = () => {
+        if (typeof window === "undefined") {
+            return initialValue;
+        }
+
         try {
             const savedValue = localStorage.getItem(key);
 
             if (savedValue !== null) {
                 return JSON.parse(savedValue);
             }
-        } catch (error) {
-            console.error(`Failed to read localStorage key "${key}".`, error);
+        } catch {
+            return initialValue;
         }
 
         return initialValue;
@@ -25,11 +29,8 @@ const useLocalStorage = (key, initialValue) => {
 
                 try {
                     localStorage.setItem(key, JSON.stringify(nextValue));
-                } catch (error) {
-                    console.error(
-                        `Failed to save localStorage key "${key}".`,
-                        error,
-                    );
+                } catch {
+                    return nextValue;
                 }
 
                 return nextValue;
@@ -41,8 +42,8 @@ const useLocalStorage = (key, initialValue) => {
     const resetValue = useCallback(() => {
         try {
             localStorage.removeItem(key);
-        } catch (error) {
-            console.error(`Failed to reset localStorage key "${key}".`, error);
+        } catch {
+            void key;
         }
 
         setStoredValue(initialValue);
