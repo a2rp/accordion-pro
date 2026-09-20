@@ -26,12 +26,11 @@
     border-radius: 13px;
     background: rgba(148, 167, 255, 0.1);
     color: var(--accent);
-    transition: transform 180ms ease, background 180ms ease;
+    transition: box-shadow 180ms ease;
 }
 
 .headingText:hover .headingIcon {
-    background: rgba(148, 167, 255, 0.18);
-    transform: translateY(-3px) rotate(4deg);
+    box-shadow: 0 10px 24px rgba(148, 167, 255, 0.16);
 }
 
 .headingIcon svg {
@@ -76,7 +75,7 @@
     border: 1px solid var(--border-soft);
     border-radius: 17px;
     background: rgba(255, 255, 255, 0.028);
-    transition: transform 200ms ease, border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+    transition: box-shadow 200ms ease;
 }
 
 .item::before {
@@ -93,10 +92,7 @@
 }
 
 .item:hover {
-    border-color: rgba(148, 167, 255, 0.38);
-    background: rgba(148, 167, 255, 0.055);
     box-shadow: 0 15px 32px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
 }
 
 .open {
@@ -144,7 +140,10 @@
     transition: color 180ms ease;
 }
 
-.itemButton:hover .number,
+.itemButton:hover .number {
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.55);
+}
+
 .open .number {
     color: var(--accent);
 }
@@ -193,7 +192,7 @@
     border-radius: 11px;
     background: rgba(255, 255, 255, 0.035);
     color: var(--muted);
-    transition: transform 220ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+    transition: transform 220ms ease, box-shadow 180ms ease;
 }
 
 .arrow svg {
@@ -201,7 +200,11 @@
     height: 16px;
 }
 
-.itemButton:hover .arrow,
+.itemButton:hover .arrow {
+    box-shadow: 0 8px 18px rgba(148, 167, 255, 0.15);
+    text-shadow: 0 0 10px rgba(148, 167, 255, 0.45);
+}
+
 .open .arrow {
     border-color: rgba(148, 167, 255, 0.45);
     color: #ffffff;

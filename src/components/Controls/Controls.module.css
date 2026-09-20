@@ -31,12 +31,11 @@
     border-radius: 13px;
     background: rgba(148, 167, 255, 0.1);
     color: var(--accent);
-    transition: transform 180ms ease, background 180ms ease;
+    transition: box-shadow 180ms ease;
 }
 
 .intro:hover .introIcon {
-    background: rgba(148, 167, 255, 0.18);
-    transform: rotate(-8deg);
+    box-shadow: 0 10px 24px rgba(148, 167, 255, 0.16);
 }
 
 .introIcon svg {
@@ -80,7 +79,7 @@
     cursor: pointer;
     font-size: 0.76rem;
     font-weight: 700;
-    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .button svg {
@@ -89,14 +88,12 @@
 }
 
 .button:hover:not(:disabled) {
-    border-color: rgba(148, 167, 255, 0.5);
-    background: rgba(148, 167, 255, 0.12);
-    color: #ffffff;
-    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(148, 167, 255, 0.15);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.42);
 }
 
 .button:active:not(:disabled) {
-    transform: translateY(0) scale(0.98);
+    box-shadow: 0 4px 12px rgba(148, 167, 255, 0.1);
 }
 
 .button:disabled {
@@ -111,15 +108,13 @@
 }
 
 .primary:hover:not(:disabled) {
-    border-color: transparent;
-    background: #ffffff;
-    color: #101522;
+    box-shadow: 0 10px 24px rgba(233, 237, 255, 0.2);
+    text-shadow: 0 0 10px rgba(16, 21, 34, 0.35);
 }
 
 .reset:hover:not(:disabled) {
-    border-color: rgba(255, 145, 145, 0.5);
-    background: rgba(255, 104, 104, 0.1);
-    color: #ffc1c1;
+    box-shadow: 0 10px 24px rgba(255, 104, 104, 0.15);
+    text-shadow: 0 0 12px rgba(255, 159, 159, 0.45);
 }
 
 .modeFieldset {
@@ -160,13 +155,12 @@
     border-radius: 13px;
     background: rgba(255, 255, 255, 0.025);
     cursor: pointer;
-    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .modeOption:hover {
-    border-color: rgba(148, 167, 255, 0.45);
-    background: rgba(148, 167, 255, 0.08);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(148, 167, 255, 0.14);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.38);
 }
 
 .modeOption input {

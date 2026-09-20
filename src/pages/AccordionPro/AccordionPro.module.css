@@ -111,7 +111,7 @@
     font-size: 0.82rem;
     font-weight: 750;
     text-decoration: none;
-    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .primaryAction {
@@ -120,8 +120,8 @@
 }
 
 .primaryAction:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(233, 237, 255, 0.2);
+    text-shadow: 0 0 10px rgba(16, 21, 34, 0.35);
 }
 
 .secondaryAction {
@@ -131,10 +131,8 @@
 }
 
 .secondaryAction:hover {
-    border-color: rgba(148, 167, 255, 0.5);
-    background: rgba(148, 167, 255, 0.11);
-    color: #ffffff;
-    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(148, 167, 255, 0.16);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.45);
 }
 
 .primaryAction svg,
@@ -193,12 +191,10 @@
     min-height: 420px;
     object-fit: cover;
     filter: saturate(0.74) contrast(1.05);
-    transition: transform 700ms ease, filter 700ms ease;
 }
 
-.heroVisual:hover img {
-    filter: saturate(1) contrast(1.03);
-    transform: scale(1.04);
+.heroVisual:hover {
+    box-shadow: 0 38px 90px rgba(148, 167, 255, 0.14);
 }
 
 .visualCard,

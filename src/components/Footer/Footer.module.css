@@ -30,12 +30,11 @@
     border-radius: 13px;
     background: rgba(148, 167, 255, 0.09);
     color: #ff9fb4;
-    transition: transform 180ms ease, background 180ms ease;
+    transition: box-shadow 180ms ease;
 }
 
 .footerIntro:hover .heart {
-    background: rgba(255, 159, 180, 0.15);
-    transform: translateY(-3px) rotate(6deg);
+    box-shadow: 0 10px 24px rgba(255, 159, 180, 0.16);
 }
 
 .heart svg {
@@ -76,7 +75,7 @@
     background: rgba(255, 255, 255, 0.035);
     color: var(--muted);
     text-decoration: none;
-    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .iconLink::after {
@@ -94,23 +93,19 @@
     font-weight: 650;
     opacity: 0;
     pointer-events: none;
-    transform: translateX(50%) translateY(3px);
-    transition: opacity 150ms ease, transform 150ms ease;
+    transition: opacity 150ms ease;
     white-space: nowrap;
 }
 
 .iconLink:hover,
 .iconLink:focus-visible {
-    border-color: rgba(148, 167, 255, 0.55);
-    background: rgba(148, 167, 255, 0.13);
-    color: #ffffff;
-    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(148, 167, 255, 0.16);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.45);
 }
 
 .iconLink:hover::after,
 .iconLink:focus-visible::after {
     opacity: 1;
-    transform: translateX(50%) translateY(0);
 }
 
 .iconLink svg {
@@ -145,8 +140,7 @@
 }
 
 .copyright a:hover {
-    color: #ffffff;
-    text-decoration: underline;
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.55);
 }
 
 @media (max-width: 800px) {

@@ -41,12 +41,11 @@
     border-radius: 13px;
     background: #0c0f16;
     object-fit: contain;
-    transition: transform 180ms ease, border-color 180ms ease;
+    transition: box-shadow 180ms ease;
 }
 
 .brand:hover img {
-    border-color: rgba(148, 167, 255, 0.7);
-    transform: rotate(-5deg) scale(1.05);
+    box-shadow: 0 0 0 3px rgba(148, 167, 255, 0.18), 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .brand span {
@@ -85,7 +84,7 @@
     font-size: 0.78rem;
     font-weight: 650;
     text-decoration: none;
-    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .desktopNav a {
@@ -94,9 +93,8 @@
 
 .desktopNav a:hover,
 .mobilePanel a:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
-    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(148, 167, 255, 0.12);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.45);
 }
 
 .desktopNav svg,
@@ -153,14 +151,13 @@
     color: var(--muted);
     cursor: pointer;
     text-decoration: none;
-    transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    transition: box-shadow 180ms ease, text-shadow 180ms ease;
 }
 
 .github:hover,
 .menuButton:hover {
-    border-color: rgba(148, 167, 255, 0.55);
-    color: #ffffff;
-    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(148, 167, 255, 0.16);
+    text-shadow: 0 0 12px rgba(148, 167, 255, 0.45);
 }
 
 .menuButton {
